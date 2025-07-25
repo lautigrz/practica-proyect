@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat Simple</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 400px;
+            max-width: 90vw;
+            height: 400px;
+            background: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            font-size: 1.25rem;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #e9ebf0;
+        }
+        .message {
+            margin-bottom: 15px;
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            position: relative;
+            clear: both;
+        }
+        .message.sent {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 0;
+        }
+        .message.received {
+            background: #f1f0f0;
+            color: #333;
+            margin-right: auto;
+            border-bottom-left-radius: 0;
+        }
+        .chat-input {
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-radius: 0 0 10px 10px;
+            display: flex;
+        }
+        .chat-input input {
+            flex: 1;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            outline: none;
+        }
+        .chat-input button {
+            background: #007bff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 0 20px;
+            margin-left: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+        .form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container" style="display: none">
+    <div class="chat-header">Chat Simple</div>
+    <div class="chat-messages" id="chatMessages">
+
+
+    </div>
+    <div class="chat-input" id="chatForm">
+        <input type="text" id="mensaje" autocomplete="off" placeholder="Escribí un mensaje..." required />
+        <button type="submit" id="enviar">Enviar</button>
+    </div>
+</div>
+
+<div class="form-container">
+    <h2>Login</h2>
+    <div>
+        <input type="text" name="username" id="user" placeholder="Nombre de usuario" />
+        <input type="text" name="password" id="pass" placeholder="Contraseña" />
+
+        <button type="submit" id="ingresar">Ingresar</button>
+    </div>
+    <p class="error" id="errorMsg"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script th:src="@{/js/chat.js}"></script>
+</body>
+</html>
