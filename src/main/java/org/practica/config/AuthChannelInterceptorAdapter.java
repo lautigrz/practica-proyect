@@ -32,36 +32,13 @@ public class AuthChannelInterceptorAdapter implements ChannelInterceptor {
                 Authentication auth = jwtTokenProvider.getAuthentication(token);
 
                 accessor.setUser(auth); // setear el principal
-               // SecurityContextHolder.getContext().setAuthentication(auth); // útil si usás @PreAuthorize
+
             }
         }
 
         return message;
     }
 
-    /*
-        @Override
-    public Message<?> preSend(Message<?> message, MessageChannel channel){
-        StompHeaderAccessor accessor = StompHeaderAccessor.wrap(message);
-        String token = accessor.getFirstNativeHeader("Authorization");
-        logger.info("token: " + token);
-
-        logger.info("Entro a preSend");
-        if(token != null && jwtTokenProvider.validarToken(token)){
-
-            Authentication auth = jwtTokenProvider.getAuthentication(token);
-            logger.info("auth: " + auth);
-            accessor.setUser(auth);
-            SecurityContextHolder.getContext().setAuthentication(auth);
-        }else if(StompCommand.CONNECT.equals(accessor.getCommand())){
-            throw new IllegalArgumentException("Invalid token");
-        }
-        logger.info("User in preSend: " + accessor.getUser());
-        logger.info("Security: " + SecurityContextHolder.getContext().getAuthentication());
-
-        return message;
-    }
-     */
 
 
 }

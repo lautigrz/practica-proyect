@@ -66,7 +66,7 @@ function sendMessage(text) {
     };
 
     document.getElementById("mensaje").value = "";
-    stompClient.send('/app/chat', {'Authorization': token}, JSON.stringify(mensajeObj));
+    stompClient.send('/app/chat', {}, JSON.stringify(mensajeObj));
 }
 
 
